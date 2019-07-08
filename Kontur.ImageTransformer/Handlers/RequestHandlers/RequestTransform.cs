@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Kontur.ImageTransformer.Handler
+namespace Kontur.ImageTransformer.Handlers.RequestHandlers
 {
     internal class RequestTransform
     {

@@ -4,8 +4,9 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net;
+using Kontur.ImageTransformer.Handlers.RequestHandlers;
 
-namespace Kontur.ImageTransformer.Handler.ImageHandler
+namespace Kontur.ImageTransformer.Handlers.ImageHandlers
 {
     internal static class ImageHandler
     {
@@ -59,15 +60,6 @@ namespace Kontur.ImageTransformer.Handler.ImageHandler
 
             var cuttedImage = image.Clone(rectangular, PixelFormat.Format32bppArgb);
             return cuttedImage;
-        }
-        #endregion
-
-        #region SendImage
-        internal static void SendImage(HttpListenerContext context, Bitmap image)
-        {
-            context.Response.ContentType = "image/png";
-            image.Save(context.Response.OutputStream, ImageFormat.Png);
-            context.Response.OutputStream.Close();
         }
         #endregion
 

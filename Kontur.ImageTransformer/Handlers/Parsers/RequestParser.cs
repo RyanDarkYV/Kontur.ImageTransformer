@@ -55,6 +55,16 @@ namespace Kontur.ImageTransformer.Handlers.Parsers
             var rectangleWidth = rectangleCoords[2];
             var rectangleHeight = rectangleCoords[3];
 
+            if (axisX < 0)
+            {
+                axisX = 0;
+            }
+
+            if (axisY < 0)
+            {
+                axisY = 0;
+            }
+
             var rectangle = new Rectangle(Math.Min(axisX, axisX + rectangleWidth),
                 Math.Min(axisY, axisY + rectangleHeight), Math.Abs(rectangleWidth), Math.Abs(rectangleHeight));
 
