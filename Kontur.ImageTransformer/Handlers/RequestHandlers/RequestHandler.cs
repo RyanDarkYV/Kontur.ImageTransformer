@@ -17,11 +17,18 @@ namespace Kontur.ImageTransformer.Handlers.RequestHandlers
         #region HandleContext
         internal static void HandleRequest(HttpListenerContext context)
         {
-            var operationData = RequestParser.ParseQuery(context.Request.RawUrl);
-            var oldImage = ImageHandler.GetImageFromRequest(context.Request);
-            var newImage = ImageHandler.TransformImage(oldImage, operationData);
+            try
+            {
+                var operationData = RequestParser.ParseQuery(context.Request.RawUrl);
+                var oldImage = ImageHandler.GetImageFromRequest(context.Request);
+                var newImage = ImageHandler.TransformImage(oldImage, operationData);
 
-            SendImage(context, newImage);
+                SendImage(context, newImage);
+            }
+            catch
+            {
+                CloseResponseWithCode(context, HttpStatusCode.BadRequest);
+            }
         }
         #endregion
 
